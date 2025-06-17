@@ -1,8 +1,7 @@
-import React from "react";
-import { useWishlist } from "../context/WishlistContext";
+import { useSelector } from "react-redux";
 
 const Wishlist = () => {
-  const { wishlist } = useWishlist();
+  const wishlist = useSelector(state => state.wishlist)
 
   return (
     <div>

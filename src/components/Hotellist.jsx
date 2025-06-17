@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Additem } from "../features/cart/cartSlice"; // or wishlistSlice if separate
+import { addToWishlist } from "../features/wishlist/wishlistSlice"; // or wishlistSlice if separate
 import { FaHeart } from "react-icons/fa";
 
 import {
@@ -12,9 +12,9 @@ import {
 const Hotellist = () => {
   const dispatch = useDispatch();
   const { selectedCountry, hotels, currentPage, status } = useSelector((state) => state.hotel);
-   const handleWishlist = (hotel) => {
-      dispatch(Additem(hotel));
-    };
+  const handleWishlist = (hotel) => {
+    dispatch(addToWishlist(hotel));
+  };
   const hotelsPerPage = 5;
 
   useEffect(() => {
@@ -74,17 +74,17 @@ const Hotellist = () => {
             currentHotels.map((hotel) => (
               <div key={hotel.id} className="border p-4 rounded bg-white shadow">
                 <h3 className="font-bold text-lg">{hotel.name}</h3>
- <button
+                <button
 
-        onClick={()=>{handleWishlist(hotel)}}
-        className="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-lg"
-        title="Add to Wishlist"
-      >
-        Add to Wishlist
-        <FaHeart />
-      </button>
+                  onClick={() => { handleWishlist(hotel) }}
+                  className="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-lg"
+                  title="Add to Wishlist"
+                >
+                  Add to Wishlist
+                  <FaHeart />
+                </button>
 
-            
+
                 <p className="text-gray-600">{hotel.city}</p>
                 {hotel.image && (
                   <img
@@ -112,11 +112,10 @@ const Hotellist = () => {
                 <button
                   key={index}
                   onClick={() => paginate(item)}
-                  className={`px-3 py-1 border rounded ${
-                    item === currentPage
+                  className={`px-3 py-1 border rounded ${item === currentPage
                       ? 'bg-blue-500 text-white'
                       : 'bg-white text-blue-500 hover:bg-blue-100'
-                  }`}
+                    }`}
                 >
                   {item}
                 </button>

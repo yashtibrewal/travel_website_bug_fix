@@ -8,30 +8,27 @@ import Hotellist from "./components/Hotellist";
 
 
 // Wishlist Context Provider
-import WishlistProvider from "./context/WishlistContext";
 import Wishlist from "./pages/wishlist";
 
 const App = () => {
   return (
-    <WishlistProvider>
-      <Router>
-        <div className="flex flex-col min-h-screen">
-          {/* Header */}
-          <Header />
+    <Router>
+      <div className="flex flex-col min-h-screen">
+        {/* Header */}
+        <Header />
 
-          {/* Main Content */}
-          <main className="flex-grow container mx-auto px-4 py-6">
-            <Routes>
-              <Route path="/" element={<Hotellist />} />
-              <Route path="/wishlist" element={<Wishlist />} />
-            </Routes>
-          </main>
+        {/* Main Content */}
+        <main className="flex-grow container mx-auto px-4 py-6">
+          <Routes>
+            <Route path="/" element={<Hotellist />} />
+            <Route path="/wishlist" element={<Wishlist />} />
+          </Routes>
+        </main>
 
-          {/* Footer */}
-          <Footer />
-        </div>
-      </Router>
-    </WishlistProvider>
+        {/* Footer */}
+        <Footer />
+      </div>
+    </Router>
   );
 };
 
